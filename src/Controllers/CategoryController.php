@@ -14,7 +14,7 @@ class CategoryController extends AbstractController
         switch ($this->method) {
             case 'GET':
                 if ($this->id) {
-                    // path: category/?{id}
+                    // path: category/{id}
                     $result = $this->articleService->getByCategoryId($this->id);
                     $statusCode = 200;
                 }

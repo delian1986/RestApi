@@ -42,6 +42,8 @@ class ArticleController extends AbstractController
                 $request = json_decode(file_get_contents('php://input'), true);
                 if ($request) {
                     $result = $this->articleService->create($request);
+                    $result = $this->jsonSerialize(array("message" => "article created"));
+                    $statusCode = 201;
                 } else {
                     $statusCode = 422;
                 }
@@ -53,6 +55,7 @@ class ArticleController extends AbstractController
                     $result = $this->articleService->statusUpdate($request, $this->id);
                     if ($result) {
                         $statusCode = 200;
+                        $result = $this->jsonSerialize(array("message" => "article updated"));
                     } else {
                         $statusCode = 404;
                     }
