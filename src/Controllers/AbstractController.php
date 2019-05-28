@@ -37,7 +37,7 @@ abstract class AbstractController
      * @param $data
      * @param $statusCode
      */
-    function jsonResponse($data, $statusCode)
+    protected function jsonResponse($data, $statusCode)
     {
         $body = $this->jsonSerialize($data);
         $statusMessage=$this->getHttpStatusMessage($statusCode);
@@ -49,7 +49,7 @@ abstract class AbstractController
         echo $response['body'] = $body;
     }
 
-    private function jsonSerialize($data): string
+    protected function jsonSerialize($data): string
     {
         if ($data instanceof Generator) {
             $jsonArray = [];
